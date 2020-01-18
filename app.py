@@ -1,7 +1,7 @@
 import requests, os, sys, base64
 from flask import Flask, render_template, request, jsonify
 
-endpoint = "https://hackcambridge2020ecoscancustom.cognitiveservices.azure.com/customvision/v3.0/Prediction/b22c88e7-f18f-48a5-a47d-1fc90cf12440/classify/iterations/Iteration1/image"
+endpoint = "https://hackcambridge2020ecoscancustom.cognitiveservices.azure.com/customvision/v3.0/Prediction/b22c88e7-f18f-48a5-a47d-1fc90cf12440/classify/iterations/Iteration2/image"
 subscription_key = "d0852ee0061e46c4ba82fe724ddfbf1a"
 
 app = Flask(__name__)

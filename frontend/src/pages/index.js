@@ -81,11 +81,9 @@ const IndexPage = ({ data }) => {
               front={false}
               capture={captureImage}
               ref={cam}
-              width="480px"
-              height="360px"
+              width="800px"
+              height="500px"
               btnColor="rgb(0,0,0,1)"
-              focusHeight="45%"
-              focusWidth="100%"
             />
           ) : null}
         </div>
@@ -122,11 +120,8 @@ const IndexPage = ({ data }) => {
         {carbonFootprintData.map((data, index) => (
           <div className={styles.mainPieStat}>
             <div className={styles.foodMainDeal}>
-              <h2 className={styles.mainPieHeading}>
-                {" "}
-                Total Carbon Footprint{" "}
-              </h2>
-              <div className={styles.mainPieNumber}>d{data.carbonOutput}</div>
+              <h2 className={styles.mainPieHeading}>{data.food}</h2>
+              <div className={styles.mainPieNumber}>{data.carbonOutput}</div>
               <div className={styles.mainPieText}>kg CO2e / kg</div>
             </div>
           </div>

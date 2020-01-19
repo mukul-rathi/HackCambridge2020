@@ -124,10 +124,11 @@ const IndexPage = ({ data }) => {
       <div>
         {carbonFootprintData.map((data, index) => (
           <div className={styles.mainPieStat}>
-            <span key={index}>
-              <span> {data.food}</span>
-              <span> {data.carbonOutput}</span>
-            </span>
+            <h2 className={styles.mainPieHeading}> Total Carbon Footprint </h2>
+            <div>
+              <div className={styles.mainPieNumber}>d{data.carbonOutput}</div>
+              <div className={styles.mainPieText}>kg CO2e / kg</div>
+            </div>
           </div>
         ))}
       </div>
@@ -144,6 +145,11 @@ export const query = graphql`
           category
           food
           carbonOutput
+          attributes {
+            item
+            quantity
+            units
+          }
         }
       }
     }

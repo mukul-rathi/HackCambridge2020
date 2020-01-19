@@ -22,7 +22,7 @@ const cameraButton = (
 )
 
 const backendAPI = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://hc2020ecoscan.azurewebsites.net",
   headers: { "Content-Type": "application/json" },
 })
 
@@ -57,8 +57,7 @@ function imageToCarbonFootPrint(imageData, allcarbonFootprintData) {
 
 const IndexPage = ({ data }) => {
   const [imagesData, captureImage] = useCaptureImage([
-    { object: "potato chips", probability: 0.88 },
-    { object: "banana", probability: 0.988 },
+    { object: "banana", probability: 0.988 }
   ])
   const allcarbonFootprintData = data.allFoodCarbonFootprintJson.edges
 
@@ -75,7 +74,7 @@ const IndexPage = ({ data }) => {
     <div className={styles.mainWrapper}>
       <div className={styles.camera}>
         <div className={styles.heading}>
-          <h1>Eco Scan</h1>
+          <h1>EcoScan</h1>
         </div>
         <div className={styles.cameraWindow}>
           {typeof window !== `undefined` ? (

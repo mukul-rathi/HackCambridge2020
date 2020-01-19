@@ -1,0 +1,33 @@
+@import "_fonts.scss";
+
+input,
+button,
+submit {
+  border: none;
+}
+
+.mainWrapper {
+  max-width: 500px;
+  margin: 2em auto;
+}
+
+.heading {
+  text-align: center;
+  color: $heading-black;
+  font-family: $heading-font;
+  font-size: 48px;
+  font-weight: 300;
+}
+
+.camera {
+  margin: 2em 0em;
+  border: none;
+}
+
+.button {
+  border: 1em green;
+  margin: 1em auto;
+  width: 6em;
+  fill: green;
+  z-index: 1000000;
+}

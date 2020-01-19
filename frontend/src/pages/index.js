@@ -83,7 +83,7 @@ const IndexPage = ({ data }) => {
               ref={cam}
               width="800px"
               height="500px"
-              btnColor="rgb(0,0,0,1)"
+              btnColor="rgb(0,0,0,0)"
             />
           ) : null}
         </div>
@@ -103,14 +103,13 @@ const IndexPage = ({ data }) => {
             labelComponent={<VictoryLabel renderInPortal />}
           />
         </div>
-        <div>
+        <div className={styles.mainSummary}>
           <h2 className={styles.mainPieHeading}> Total Carbon Footprint </h2>
           <div>
             <div className={styles.mainPieNumber}>
-              {carbonFootprintData.reduce(
-                (acc, curr) => acc + parseFloat(curr.carbonOutput),
-                0
-              )}
+              {carbonFootprintData
+                .reduce((acc, curr) => acc + curr.carbonOutput, 0)
+                .toFixed(3)}
             </div>
             <div className={styles.mainPieText}>kg CO2e / kg</div>
           </div>
@@ -118,11 +117,26 @@ const IndexPage = ({ data }) => {
       </div>
       <div>
         {carbonFootprintData.map((data, index) => (
-          <div className={styles.mainPieStat}>
+          <div key={index} className={styles.mainPieStat}>
             <div className={styles.foodMainDeal}>
-              <h2 className={styles.mainPieHeading}>{data.food}</h2>
-              <div className={styles.mainPieNumber}>{data.carbonOutput}</div>
-              <div className={styles.mainPieText}>kg CO2e / kg</div>
+              <h2 className={styles.mainThingHeading}>{data.food}</h2>
+              <div>
+                {" "}
+                <h3 className={styles.mainThingSubHeading}>Carbon Footprint</h3>
+                <div className={styles.mainPieNumber}>{data.carbonOutput}</div>
+                <div className={styles.mainPieText}>kg CO2e / kg</div>
+              </div>
+            </div>
+            <div className={styles.attributes}>
+              <h3 className={styles.mainThingSubHeading}>
+                Contributing factors:
+              </h3>
+              {data.attributes.map(attribute => (
+                <div>
+                  <strong> {attribute.item + ": "}</strong>{" "}
+                  {attribute.quantity + " " + attribute.units}
+                </div>
+              ))}
             </div>
           </div>
         ))}

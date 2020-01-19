@@ -83,9 +83,9 @@ const IndexPage = ({ data }) => {
               ref={cam}
               width="480px"
               height="360px"
-              btnColor="rgb(0,0,0, )"
-              focusHeight="360px"
-              focusWidth="480px"
+              btnColor="rgb(0,0,0,1)"
+              focusHeight="45%"
+              focusWidth="100%"
             />
           ) : null}
         </div>

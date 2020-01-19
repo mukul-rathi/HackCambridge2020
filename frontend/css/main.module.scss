@@ -23,7 +23,8 @@ button:active {
   color: $heading-black;
   font-family: $heading-font;
   font-size: 48px;
-  font-weight: 300;
+  font-weight: 100;
+  letter-spacing: 3px;
 }
 
 .camera-container {
@@ -96,7 +97,7 @@ button:active {
 }
 
 .camera {
-  background-color: azure;
+  background-color: white;
   border-style: solid;
   border-color: green;
   border-width: 5px;

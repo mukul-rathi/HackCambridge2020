@@ -6,17 +6,17 @@
     "attributes": [
       {
         "item": "transport",
-        "quantity": 0.01452,
+        "quantity": 0.04403,
         "units": "tKm"
       },
       {
-        "item": "electricity",
-        "quantity": 0.02889,
-        "units": "kWh"
+        "item": "diesel",
+        "quantity": 0.05671,
+        "units": "L"
       },
       {
         "item": "fertilizer",
-        "quantity": 0.01689,
+        "quantity": 0.00557,
         "units": "kg"
       }
     ]
@@ -47,18 +47,66 @@
     "category": "Processed Foods",
     "food": "potato chips",
     "carbonOutput": 3.4373,
-    "attributes": []
+    "attributes": [
+      {
+        "item": "transport",
+        "quantity": 3.43733,
+        "units": "tKm"
+      },
+      {
+        "item": "electricity",
+        "quantity": 0.25278,
+        "units": "kWh"
+      },
+      {
+        "item": "natural gas",
+        "quantity": 0.37143,
+        "units": "m3"
+      }
+    ]
   },
   {
     "category": "Fruits/Berries",
     "food": "orange",
     "carbonOutput": 1.6203,
-    "attributes": []
+    "attributes": [
+      {
+        "item": "transport",
+        "quantity": 1.07332,
+        "units": "tKm"
+      },
+      {
+        "item": "diesel",
+        "quantity": 0.06985,
+        "units": "L"
+      },
+      {
+        "item": "fertilizer",
+        "quantity": 0.06835,
+        "units": "kg"
+      }
+    ]
   },
   {
     "category": "Processed Foods",
     "food": "orange juice",
     "carbonOutput": 2.1413,
-    "attributes": []
+    "attributes": [
+      {
+        "item": "transport",
+        "quantity": 0.40000,
+        "units": "tKm"
+      },
+      {
+        "item": "electricity",
+        "quantity": 0.06944,
+        "units": "kWh"
+      },
+      {
+        "item": "natural gas",
+        "quantity": 0.02571,
+        "units": "m3"
+      }
+    ]
   }
 ]

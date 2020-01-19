@@ -7,7 +7,7 @@ const useCaptureImage = initState => {
   const callAPI = imgSrc =>
     axios
       .post(
-        "process_image",
+        "CHANGE THIS URL PLEASE",
         { "Content-Type": "application/json" },
         JSON.stringify(imgSrc)
       )
@@ -25,7 +25,9 @@ const useCaptureImage = initState => {
 }
 
 const IndexPage = () => {
-  const [carbonFootprintData, captureImage] = useCaptureImage([])
+  const [carbonFootprintData, captureImage] = useCaptureImage([
+    { object: "banana", probability: 0.988 },
+  ])
 
   const cam = useRef(null)
   return (

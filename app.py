@@ -11,7 +11,7 @@ app = Flask(__name__)
 def home():
     # Add any required page data here
     page_data = {}
-    return render_template('home.html', page_data = page_data)
+    return render_template('index.html', page_data = page_data)
 
 @app.route('/process_image', methods=['POST'])
 def check_results():

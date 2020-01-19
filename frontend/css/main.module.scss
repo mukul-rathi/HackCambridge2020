@@ -2,8 +2,10 @@
 
 input,
 button,
-submit {
+button:hover,
+button:active {
   border: none;
+  outline: 0;
 }
 
 .mainWrapper {
@@ -20,14 +22,16 @@ submit {
 }
 
 .camera {
-  margin: 2em 0em;
+  margin: 1.5em;
   border: none;
 }
 
 .button {
-  border: 1em green;
   margin: 1em auto;
   width: 6em;
-  fill: green;
-  z-index: 1000000;
+  transition: 0.3s ease-in-out;
+}
+
+.button:active {
+  transform: scale(0.85);
 }

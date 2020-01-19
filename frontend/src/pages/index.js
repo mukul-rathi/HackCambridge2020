@@ -20,23 +20,26 @@ const cameraButton = (
 )
 
 const backendAPI = axios.create({
-  baseURL: "https://mukulrathi.com",
+  baseURL: "http://localhost:5000",
   headers: { "Content-Type": "application/json" },
 })
 
 const useCaptureImage = initState => {
   const [carbonFootprintData, setCarbonFootPrintData] = useState(initState)
   const callAPI = imgSrc =>
-    backendAPI.post("/", JSON.stringify(imgSrc)).then(res => {
-      console.log(res)
-      setCarbonFootPrintData([
-        ...carbonFootprintData,
-        {
-          object: res.object,
-          probability: res.probability,
-        },
-      ])
-    })
+    backendAPI
+      .post("/", JSON.stringify(imgSrc))
+      .then(res => {
+        console.log(res)
+        setCarbonFootPrintData([
+          ...carbonFootprintData,
+          {
+            object: res.object,
+            probability: res.probability,
+          },
+        ])
+      })
+      .catch(_ => console.log(imgSrc))
 
   return [carbonFootprintData, callAPI]
 }

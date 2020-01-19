@@ -32,7 +32,7 @@ const useCaptureImage = initState => {
     backendAPI
       .post("/", JSON.stringify(imgSrc))
       .then(res => {
-        console.log(res)
+        console.log(imgSrc)
         setimagesData([
           ...imagesData,
           {
@@ -43,7 +43,6 @@ const useCaptureImage = initState => {
       })
       .catch(err => {
         console.log(imgSrc)
-        console.log(err)
       })
   return [imagesData, callAPI]
 }

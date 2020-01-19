@@ -14,7 +14,6 @@ def check_results():
     # Get the JSON passed to the request and extract the image
     # Convert the image to a binary stream ready to pass to Azure AI services
     body = request.get_json()
-    print(body)
     image_bytes = base64.b64decode(body.split(',')[1])
 
     headers = {'Prediction-Key': subscription_key, 'Content-Type': 'application/octet-stream'}

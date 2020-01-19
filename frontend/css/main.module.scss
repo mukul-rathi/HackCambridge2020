@@ -22,16 +22,65 @@ button:active {
 }
 
 .camera {
+  margin-bottom: 1em;
+  border-bottom: 4px black;
+}
+
+.cameraWindow {
   margin: 1.5em;
-  border: none;
 }
 
 .button {
-  margin: 1em auto;
-  width: 6em;
+  margin: 2em auto 6em auto;
+  width: 10em;
   transition: 0.3s ease-in-out;
+  fill: black;
 }
 
 .button:active {
   transform: scale(0.85);
+}
+
+.mainPieStat {
+  display: flex;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  border-top: 0.5em solid $purple;
+  padding: 1em;
+  border-radius: 6px;
+  justify-content: space-between;
+  margin-bottom: 3em;
+}
+
+.pieChart {
+  max-width: 50%;
+  margin-right: 1em;
+}
+
+.mainPieHeading {
+  text-align: center;
+  color: $heading-black;
+  font-family: $heading-font;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 100%;
+}
+
+.mainPieNumber {
+  text-align: center;
+  color: $heading-black;
+  font-family: $heading-font;
+  font-size: 28px;
+  font-weight: 100;
+  line-height: 100%;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+
+.mainPieText {
+  margin: auto;
+  text-align: center;
+  color: $light-grey;
+  font-family: $body-font;
+  font-weight: 100;
+  font-size: 20px;
 }

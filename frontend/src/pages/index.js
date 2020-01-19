@@ -3,6 +3,7 @@ import { Camera } from "react-cam"
 import axios from "axios"
 import styles from "../../css/main.module.scss"
 import { graphql } from "gatsby"
+import { VictoryPie, VictoryLabel } from "victory"
 
 const cameraButton = (
   <svg
@@ -56,6 +57,7 @@ function imageToCarbonFootPrint(imageData, allcarbonFootprintData) {
 
 const IndexPage = ({ data }) => {
   const [imagesData, captureImage] = useCaptureImage([
+    { object: "potato chips", probability: 0.88 },
     { object: "banana", probability: 0.988 },
   ])
   const allcarbonFootprintData = data.allFoodCarbonFootprintJson.edges
@@ -63,40 +65,70 @@ const IndexPage = ({ data }) => {
   const carbonFootprintData = imagesData.map(imageData =>
     imageToCarbonFootPrint(imageData, allcarbonFootprintData)
   )
+
+  const pieChartData = carbonFootprintData.map(data => ({
+    x: data.food,
+    y: data.carbonOutput,
+  }))
   const cam = useRef(null)
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.heading}>
-        <h1>Eco Scan</h1>
-      </div>
       <div className={styles.camera}>
-        {typeof window !== `undefined` ? (
-          <Camera
-            showFocus={true}
-            front={false}
-            capture={captureImage}
-            ref={cam}
-            width="auto"
-            height="80%"
-            btnColor="white"
-            focusHeight="55%"
-            focusWidth="80%"
+        <div className={styles.heading}>
+          <h1>Eco Scan</h1>
+        </div>
+        <div className={styles.cameraWindow}>
+          {typeof window !== `undefined` ? (
+            <Camera
+              showFocus={true}
+              front={false}
+              capture={captureImage}
+              ref={cam}
+              width="auto"
+              height="80%"
+              btnColor="rgb(0,0,0, 0)"
+              focusHeight="55%"
+              focusWidth="80%"
+            />
+          ) : null}
+        </div>
+        <div>
+          <div className={styles.button}>
+            <button onClick={img => cam.current.capture(img)}>
+              {cameraButton}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className={styles.mainPieStat}>
+        <div className={styles.pieChart}>
+          <VictoryPie
+            colorScale="qualitative"
+            data={pieChartData}
+            labelComponent={<VictoryLabel renderInPortal />}
           />
-        ) : null}
+        </div>
+        <div>
+          <h2 className={styles.mainPieHeading}> Total Carbon Footprint </h2>
+          <div>
+            <div className={styles.mainPieNumber}>
+              {carbonFootprintData.reduce(
+                (acc, curr) => acc + parseFloat(curr.carbonOutput),
+                0
+              )}
+            </div>
+            <div className={styles.mainPieText}>kg CO2e / kg</div>
+          </div>
+        </div>
       </div>
       <div>
-        <div className={styles.button}>
-          <button onClick={img => cam.current.capture(img)}>
-            {cameraButton}
-          </button>
-        </div>
+        {carbonFootprintData.map((data, index) => (
+          <span key={index}>
+            <span> {data.food}</span>
+            <span> {data.carbonOutput}</span>
+          </span>
+        ))}
       </div>
-      {carbonFootprintData.map((data, index) => (
-        <div key={index}>
-          <span> {data.food}</span>
-          <span> {data.carbonOutput}</span>
-        </div>
-      ))}
     </div>
   )
 }

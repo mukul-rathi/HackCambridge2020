@@ -6,14 +6,8 @@ subscription_key = "d0852ee0061e46c4ba82fe724ddfbf1a"
 
 app = Flask(__name__)
 
-# The root route, returns the home.html page
-@app.route('/')
-def home():
-    # Add any required page data here
-    page_data = {}
-    return render_template('index.html', page_data = page_data)
-
-@app.route('/process_image', methods=['POST'])
+# The root route
+@app.route('/',methods=['POST'])
 def check_results():
     # Get the JSON passed to the request and extract the image
     # Convert the image to a binary stream ready to pass to Azure AI services

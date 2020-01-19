@@ -123,10 +123,12 @@ const IndexPage = ({ data }) => {
       </div>
       <div>
         {carbonFootprintData.map((data, index) => (
-          <span key={index}>
-            <span> {data.food}</span>
-            <span> {data.carbonOutput}</span>
-          </span>
+          <div className={styles.mainPieStat}>
+            <span key={index}>
+              <span> {data.food}</span>
+              <span> {data.carbonOutput}</span>
+            </span>
+          </div>
         ))}
       </div>
     </div>

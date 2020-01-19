@@ -82,11 +82,11 @@ const IndexPage = ({ data }) => {
               front={false}
               capture={captureImage}
               ref={cam}
-              width="auto"
-              height="80%"
-              btnColor="rgb(0,0,0, 0)"
-              focusHeight="55%"
-              focusWidth="80%"
+              width="480px"
+              height="360px"
+              btnColor="rgb(0,0,0, )"
+              focusHeight="360px"
+              focusWidth="480px"
             />
           ) : null}
         </div>

@@ -36,8 +36,8 @@ const useCaptureImage = initState => {
         setimagesData([
           ...imagesData,
           {
-            object: res.object,
-            probability: res.probability,
+            object: res.data.object,
+            probability: res.data.probability,
           },
         ])
       })
@@ -45,7 +45,6 @@ const useCaptureImage = initState => {
         console.log(imgSrc)
         console.log(err)
       })
-
   return [imagesData, callAPI]
 }
 
@@ -57,7 +56,7 @@ function imageToCarbonFootPrint(imageData, allcarbonFootprintData) {
 
 const IndexPage = ({ data }) => {
   const [imagesData, captureImage] = useCaptureImage([
-    { object: "banana", probability: 0.988 }
+    { object: "banana", probability: 0.988 },
   ])
   const allcarbonFootprintData = data.allFoodCarbonFootprintJson.edges
 
@@ -123,8 +122,11 @@ const IndexPage = ({ data }) => {
       <div>
         {carbonFootprintData.map((data, index) => (
           <div className={styles.mainPieStat}>
-            <h2 className={styles.mainPieHeading}> Total Carbon Footprint </h2>
-            <div>
+            <div className={styles.foodMainDeal}>
+              <h2 className={styles.mainPieHeading}>
+                {" "}
+                Total Carbon Footprint{" "}
+              </h2>
               <div className={styles.mainPieNumber}>d{data.carbonOutput}</div>
               <div className={styles.mainPieText}>kg CO2e / kg</div>
             </div>

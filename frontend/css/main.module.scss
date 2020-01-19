@@ -114,6 +114,8 @@ button:active {
 .foodMainDeal {
   display: flex;
   text-align: center;
+  justify-content: space-between;
+  margin: 0em 2em;
 }
 .mainPieSubHeading {
   text-align: center;
@@ -123,19 +125,28 @@ button:active {
   font-weight: 400;
   line-height: 100%;
   text-transform: capitalize;
-  margin-left: 1em;
+}
+
+.mainFoodStat {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  border-top: 0.5em solid $purple;
+  padding: 1em;
+  border-radius: 6px;
+  justify-content: space-between;
+  margin: 3em auto;
+  background-color: white;
 }
 
 .attributes {
-  text-align: center;
   color: $light-grey;
   font-family: $body-font;
   font-weight: 100;
   font-size: 16px;
-  margin: auto 0em;
+  margin: 0em 2em;
 }
 
 .mainThingHeading {
+  display: inline-block;
   text-align: left;
   color: $heading-black;
   font-family: $heading-font;
@@ -148,10 +159,26 @@ button:active {
 }
 
 .mainThingSubHeading {
+  display: inline-block;
   color: $light-grey;
   font-family: $heading-font;
   font-size: 26px;
   font-weight: 400;
   line-height: 100%;
+}
+
+.mainThingNumber {
+  display: inline-block;
+}
+
+.attribute {
+  font-size: 18px;
+  color: $body-font;
+  margin: 1em 0em;
+}
+
+.itemProperty {
+  font-weight: 500;
   text-transform: capitalize;
+  color: $heading-black;
 }

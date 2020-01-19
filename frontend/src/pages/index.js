@@ -115,23 +115,24 @@ const IndexPage = ({ data }) => {
       </div>
       <div>
         {carbonFootprintData.map((data, index) => (
-          <div key={index} className={styles.mainPieStat}>
+          <div key={index} className={styles.mainFoodStat}>
             <div className={styles.foodMainDeal}>
-              <h2 className={styles.mainThingHeading}>{data.food}</h2>
-              <div>
-                {" "}
-                <h3 className={styles.mainThingSubHeading}>Carbon Footprint</h3>
+              <h2 className={styles.mainThingHeading}>{data.food}</h2>{" "}
+              <div className={styles.mainThingNumber}>
                 <div className={styles.mainPieNumber}>{data.carbonOutput}</div>
                 <div className={styles.mainPieText}>kg CO2e / kg</div>
               </div>
             </div>
             <div className={styles.attributes}>
               <h3 className={styles.mainThingSubHeading}>
-                Contributing factors:
+                Here's things that might have contributed:
               </h3>
               {data.attributes.map(attribute => (
-                <div>
-                  <strong> {attribute.item + ": "}</strong>{" "}
+                <div className={styles.attribute}>
+                  <span className={styles.itemProperty}>
+                    <strong> {attribute.item + ": "}</strong>
+                  </span>
+                  {"   "}
                   {attribute.quantity + " " + attribute.units}
                 </div>
               ))}

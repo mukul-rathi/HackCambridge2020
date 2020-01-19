@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState } from "react"
 import { Camera } from "react-cam"
 import axios from "axios"
 
@@ -28,23 +28,22 @@ const IndexPage = () => {
   const [carbonFootprintData, captureImage] = useCaptureImage([])
 
   const cam = useRef(null)
-  const camera = useEffect(() => (
-    <Camera
-      showFocus={true}
-      front={false}
-      capture={captureImage}
-      ref={cam}
-      width="80%"
-      height="auto"
-      focusWidth="80%"
-      focusHeight="60%"
-      btnColor="white"
-    />
-  ))
   return (
     <>
       <h1>Eco Scan</h1>
-      {camera}
+      {typeof window !== `undefined` ? (
+        <Camera
+          showFocus={true}
+          front={false}
+          capture={captureImage}
+          ref={cam}
+          width="80%"
+          height="auto"
+          focusWidth="80%"
+          focusHeight="60%"
+          btnColor="white"
+        />
+      ) : null}
       <button onClick={img => cam.current.capture(img)}>Take image</button>
       {carbonFootprintData.map(data => (
         <div>

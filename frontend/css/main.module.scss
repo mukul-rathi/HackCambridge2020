@@ -14,7 +14,7 @@ button:active {
 }
 
 .mainWrapper {
-  max-width: 500px;
+  max-width: 800px;
   margin: 2em auto;
 }
 
@@ -23,7 +23,8 @@ button:active {
   color: $heading-black;
   font-family: $heading-font;
   font-size: 48px;
-  font-weight: 300;
+  font-weight: 100;
+  letter-spacing: 3px;
 }
 
 .camera-container {
@@ -57,12 +58,12 @@ button:active {
   padding: 1em;
   border-radius: 6px;
   justify-content: space-between;
-  margin: 3em 0em;
+  margin: 3em auto;
   background-color: white;
 }
 
 .pieChart {
-  max-width: 50%;
+  width: 70%;
   margin-right: 1em;
 }
 
@@ -73,8 +74,13 @@ button:active {
   font-size: 32px;
   font-weight: 300;
   line-height: 100%;
+  text-transform: capitalize;
+  margin-left: 1em;
+  margin-right: 0.5em;
 }
-
+.mainSummary {
+  margin: 5em 0em 1em 0em;
+}
 .mainPieNumber {
   text-align: center;
   color: $heading-black;
@@ -87,7 +93,7 @@ button:active {
 }
 
 .mainPieText {
-  margin: auto;
+  margin-left: 1em;
   text-align: center;
   color: $light-grey;
   font-family: $body-font;
@@ -96,7 +102,9 @@ button:active {
 }
 
 .camera {
-  background-color: azure;
+  margin: auto;
+  width: 800px;
+  background-color: white;
   border-style: solid;
   border-color: green;
   border-width: 5px;
@@ -107,4 +115,44 @@ button:active {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+.mainPieSubHeading {
+  text-align: center;
+  color: $light-grey;
+  font-family: $heading-font;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 100%;
+  text-transform: capitalize;
+  margin-left: 1em;
+}
+
+.attributes {
+  text-align: center;
+  color: $light-grey;
+  font-family: $body-font;
+  font-weight: 100;
+  font-size: 16px;
+  margin: auto 0em;
+}
+
+.mainThingHeading {
+  text-align: left;
+  color: $heading-black;
+  font-family: $heading-font;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 100%;
+  text-transform: capitalize;
+  line-height: 100%;
+  margin-left: 0.5 em;
+}
+
+.mainThingSubHeading {
+  color: $light-grey;
+  font-family: $heading-font;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 100%;
+  text-transform: capitalize;
 }

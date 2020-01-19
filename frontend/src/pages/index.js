@@ -54,9 +54,7 @@ function imageToCarbonFootPrint(imageData, allcarbonFootprintData) {
 }
 
 const IndexPage = ({ data }) => {
-  const [imagesData, captureImage] = useCaptureImage([
-    { object: "banana", probability: 0.988 },
-  ])
+  const [imagesData, captureImage] = useCaptureImage([])
   const allcarbonFootprintData = data.allFoodCarbonFootprintJson.edges
 
   const carbonFootprintData = imagesData.map(imageData =>

@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Camera } from "react-cam"
 import axios from "axios"
 import styles from "../../css/main.module.scss"
+import { graphql } from "gatsby"
 
 const cameraButton = (
   <svg
@@ -25,30 +26,43 @@ const backendAPI = axios.create({
 })
 
 const useCaptureImage = initState => {
-  const [carbonFootprintData, setCarbonFootPrintData] = useState(initState)
+  const [imagesData, setimagesData] = useState(initState)
   const callAPI = imgSrc =>
     backendAPI
       .post("/", JSON.stringify(imgSrc))
       .then(res => {
         console.log(res)
-        setCarbonFootPrintData([
-          ...carbonFootprintData,
+        setimagesData([
+          ...imagesData,
           {
             object: res.object,
             probability: res.probability,
           },
         ])
       })
-      .catch(_ => console.log(imgSrc))
+      .catch(err => {
+        console.log(imgSrc)
+        console.log(err)
+      })
 
-  return [carbonFootprintData, callAPI]
+  return [imagesData, callAPI]
 }
 
-const IndexPage = () => {
-  const [carbonFootprintData, captureImage] = useCaptureImage([
+function imageToCarbonFootPrint(imageData, allcarbonFootprintData) {
+  return allcarbonFootprintData.filter(
+    carbonFootprintData => carbonFootprintData.node.food === imageData.object
+  )[0].node
+}
+
+const IndexPage = ({ data }) => {
+  const [imagesData, captureImage] = useCaptureImage([
     { object: "banana", probability: 0.988 },
   ])
+  const allcarbonFootprintData = data.allFoodCarbonFootprintJson.edges
 
+  const carbonFootprintData = imagesData.map(imageData =>
+    imageToCarbonFootPrint(imageData, allcarbonFootprintData)
+  )
   const cam = useRef(null)
   return (
     <div className={styles.mainWrapper}>
@@ -79,8 +93,8 @@ const IndexPage = () => {
       </div>
       {carbonFootprintData.map((data, index) => (
         <div key={index}>
-          <span> {data.object}</span>
-          <span> {data.probability}</span>
+          <span> {data.food}</span>
+          <span> {data.carbonOutput}</span>
         </div>
       ))}
     </div>
@@ -88,3 +102,16 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+export const query = graphql`
+  query {
+    allFoodCarbonFootprintJson {
+      edges {
+        node {
+          category
+          food
+          carbonOutput
+        }
+      }
+    }
+  }
+`
